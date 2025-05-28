@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: laravelcicd1
-          image: oforsolid/laravelcicd1:v12
+          image: oforsolid/laravelcicd1:v13
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
