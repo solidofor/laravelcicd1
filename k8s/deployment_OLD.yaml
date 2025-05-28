@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: laravelcicd1
-          image: oforsolid/laravelcicd1:REPLACE_TAG
-          imagePullPolicy: Always
+          image: oforsolid/laravelcicd1:latest  # from DockerHub
           ports:
             - containerPort: 8000
           env:
@@ -39,4 +38,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8000
-  type: LoadBalancer
+  type: LoadBalancer  # Or NodePort if using Minikube
