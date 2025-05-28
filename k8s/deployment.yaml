@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravelcicd1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laravelcicd1
+  template:
+    metadata:
+      labels:
+        app: laravelcicd1
+    spec:
+      containers:
+        - name: laravelcicd1
+          image: oforsolid/laravelcicd1:latest  # from DockerHub
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              value: "mysql"
+            - name: DB_DATABASE
+              value: "laravel"
+            - name: DB_USERNAME
+              value: "root"
+            - name: DB_PASSWORD
+              value: "root"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: laravelcicd1-service
+spec:
+  selector:
+    app: laravelcicd1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: LoadBalancer  # Or NodePort if using Minikube
