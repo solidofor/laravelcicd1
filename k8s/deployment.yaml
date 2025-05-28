@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: laravelcicd1
-          image: oforsolid/laravelcicd1:REPLACE_TAG
+          image: oforsolid/laravelcicd1:v11
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
